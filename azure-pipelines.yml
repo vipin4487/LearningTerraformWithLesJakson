@@ -13,7 +13,7 @@ variables:
 
 stages:
 - stage: Build
-  displayName: Build image
+  displayName: Build image to be pushed to docker hub
   jobs:
   - job: Build
     displayName: Build
@@ -21,13 +21,14 @@ stages:
       vmImage: ubuntu-latest
     steps:
     - task: PowerShell@2
+      displayName: Running powershell to display various variables
       inputs:
         targetType: 'inline'
         script: |
-          # Write your PowerShell commands here.
-          
+          # Write your PowerShell commands here.          
           Write-Host "Build tag version is $(tag)"
     - task: Docker@2
+      displayName: Build and Push the image to docker hub
       inputs:
         containerRegistry: 'vipindockerhubconnnection'
         repository: 'vipindocker1/myterraformwebapi'
