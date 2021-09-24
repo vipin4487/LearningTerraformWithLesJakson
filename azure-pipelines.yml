@@ -43,7 +43,8 @@ stages:
   jobs:
   - job: Deploy
     displayName: Deploy Terraform Job
-    pool: ubuntu-latest
+    pool:
+      vmImage: ubuntu-latest
     variables: 
     - group: TeraformEnvVars
     steps:
