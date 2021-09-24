@@ -45,3 +45,9 @@ setx ARM_SUBSCRIPTION_ID befc9deb-ffbe-4198-8518-e64741c6f5f7
 19) Got azure devops microsoft portal Create new project 
 20)Goto project setting => create service connections to docker hub and azure resource manager
 21)create a pipline add github respository
+22) add task to build docker image  and push it to docker hub
+23)create service principal variable group in azure devops Library => Variables
+24) setup storage on azure to persist terraform state file 
+24) we need resource group, storage account type blob and need a container also in blob)  
+25) add terraform backend in main.tf to use the storage just created
+26) Add deploy terraform stage with a script task to deploy terraform

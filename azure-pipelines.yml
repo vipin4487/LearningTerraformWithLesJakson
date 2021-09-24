@@ -36,3 +36,28 @@ stages:
         Dockerfile: '**/Dockerfile'
         tags: |
           $(tag)
+  
+- stage: DeployTerraform
+  displayName: Deploy terraform 
+  dependsOn: Build
+  jobs:
+  - job: Deploy
+    displayName: Deploy Terraform Job
+    pool: ubuntu-latest
+    variables: 
+    - group: TeraformEnvVars
+    steps:
+    - script: |
+        set e
+
+        terraform init -input=false
+        terraform apply -input=false -auto-approve
+      name: RunTerraform
+      displayName: Run terraform apply script
+      env:
+        ARM_CLIENT_ID: $(ARM_CLIENT_ID)
+        ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
+        ARM_TENANT_ID: $(ARM_TENANT_ID)
+        ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
+
+    
