@@ -51,3 +51,4 @@ setx ARM_SUBSCRIPTION_ID befc9deb-ffbe-4198-8518-e64741c6f5f7
 24) we need resource group, storage account type blob and need a container also in blob)  
 25) add terraform backend in main.tf to use the storage just created
 26) Add deploy terraform stage with a script task to deploy terraform
+27)terraform is idempotant so you have to tag the docker image before pushing it into docker hub as any code changes will not be considered any new changes and code using terraform will not be applied
